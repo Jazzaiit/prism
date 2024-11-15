@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Analytics Report</title>
+    <link rel="stylesheet" href="stylesheet.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.datatables.net/2.1.8/css/dataTables.dataTables.min.css">
+</head>
+<body>
+    <main>
+      <header class="bg-dark">
+        <div class="container">
+          <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <a class="navbar-brand" href="#">
+              <img src="https://www.aiit.vic.edu.au/images/AIIT_Logo.png" width="80px" class="img-fluid" alt="">
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+              <ul class="navbar-nav">
+                <li class="nav-item active">
+                  <a class="nav-link" href="dashobard.html">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="reports.html">Reports</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">Pricing</a>
+                </li>
+              
+              </ul>
+            </div>
+          </nav>
+        </div>
+    
+      </header>
+
+        <section>
+            <div class="container">
+              <div class="row">
+                <div class="col-md-2">
+        
+                </div>
+                <div class="col-md-8 ">
+                  <input type="text" id="searchBox" class="form-control" placeholder="Search for a course...">
+                  <div id="suggestions" class="suggestions-box py-2"></div>
+             
+                </div>
+                <div class="col-md-2">
+        
+                </div>
+              </div>
+              <hr>
+             <div class="text-center">
+              or
+             </div>
+              <hr>
+              <div class="row align-items-center">
+                <div class="col-md-6">
+                  <select name="field" id="field" class="form-control">
+                    <option value="">Select Data Field</option>
+                    <option value="VET National Code">Courses</option>
+                    <option value="Visa Grant Status">Visa Grant Status</option>
+                  </select>
+                  
+                </div>
+                <div class="col-md-6">
+                  <select  name="filter" id="filter" class="form-control">
+                    <option value="">Select filter</option>
+                  </select>
+                  
+                </div>
+             
+                
+              </div>
+              <br>
+              <div class="flex">
+                <div >
+                  <div class="form-check">
+                      <input class="form-check-input" type="radio" name="status" id="status0" value="*" checked>
+                      <label class="form-check-label" for="status1">All</label>
+                  </div>
+              </div>
+                <div >
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="status" id="status1" value="Cancelled" >
+                        <label class="form-check-label" for="status1">Cancelled</label>
+                    </div>
+                </div>
+                <div >
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="status" id="status2" value="Expired">
+                        <label class="form-check-label" for="status2">Expired</label>
+                    </div>
+                </div>
+                <div >
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="status" id="status3" value="Finished">
+                        <label class="form-check-label" for="status3">Finished</label>
+                    </div>
+                </div>
+                <div >
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="status" id="status4" value="Studying">
+                        <label class="form-check-label" for="status4">Studying</label>
+                    </div>
+                </div>
+                <div >
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="status" id="status5" value="Approved">
+                        <label class="form-check-label" for="status5">Approved</label>
+                    </div>
+                </div>
+                <div >
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="status" id="status6" value="Visa Granted">
+                        <label class="form-check-label" for="status6">Visa Granted</label>
+                    </div>
+                </div>
+            </div>
+          
+              <div class="text-center py-3">
+                <button class="btn btn-primary"  id="getReport">Get Report</button>
+
+              </div>
+
+          
+                <div>
+                  <hr>
+           
+               
+           
+                  </div>
+            </div>
+        </section>
+        <div class="container">
+          <section class=" p-0">
+       
+           
+            <div class="row ">
+              <div class="col-md-8">
+                <div class="dataContainer">
+                  <div class="layer" style="display: none;">
+                    <img src="asset/loading.webp" class="img-fluid" alt="">
+                    <h5>loading......</h5>
+                  </div>
+                  <h1>Data Table</h1>
+                  <h6 class="text-primary"></h6>
+    
+                  <table class="table table-light table-bordered table-striped text-center" id="myTable">
+                    <thead class="thead-dark">
+                      <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Full Name</th>
+                        <th scope="col">Course</th>
+                        
+                        <th scope="col">Student Status</th>
+                        <th scope="col">Action</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                  
+                    </tbody>
+                  </table>
+                  
+                </div>
+               
+     
+              </div>
+              <div class="col-md-4">
+                <div class="card mt-4">
+                  <div class="card-header alert-dark">
+                      <h6>Student Visa Actions</h6>
+                  </div>
+                  <div class="card-body ">
+                    <ul class="list-group warning">
+                      <li class="list-group-item list-group-item-warning">student name student id</li>
+                    </ul>
+                  </div>
+                 </div>
+              </div>
+            
+            </div>
+          </section>
+    
+        </div>
+     
+    </main>
+  
+
+
+      <!-- javascript and libraries -->
+      <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
+      
+      <script src="https://cdn.datatables.net/2.1.8/js/dataTables.min.js"></script>
+      
+
+      <script type="module" src="./script/app.js"></script>
+   <script>
+  
+   </script>
+       
+</body>
+</html>
