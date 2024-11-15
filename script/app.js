@@ -40,7 +40,7 @@ drpFilter.addEventListener('change',
   async function () {
     
     fieldInput.innerHTML = '';
-    const response = await fetch('../filterData.js');
+    const response = await fetch('./script/filterData.js');
     const subList = await response.json();
     const updatedData = subList.find(e => e.fieldName === this.value);
 
