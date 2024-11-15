@@ -148,7 +148,11 @@ function studentDataByCourse(courseCode){
       courses.innerHTML += `
       <tr>
       <td>${row+=1}</td>
+          <td>${element['"Provider Student ID"']?.replace(/"/g, '')} </td>
+          <td>${element['"First Name"']?.replace(/"/g, '')} </td>
+          
           <td scope="row"><span class="badge ${colour} "> ${element['"COE Status"']?.replace(/"/g, '')}</span></td>
+
           <td>${element['"VET National Code"']?.replace(/"/g, '')} : ${element['"Course Name"']?.replace(/"/g, '')}</td>
           <td><span > ${element['"Proposed Start Date"']?.replace(/"/g, '')}</span></td>
           <td ><span >${element['"Proposed End Date"']?.replace(/"/g, '')}</span></td>
