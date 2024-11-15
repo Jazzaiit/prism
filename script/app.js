@@ -110,7 +110,7 @@ data.forEach(element => {
             <td>${element['"First Name"'].replace(/"/g, '')} ${element['"Family Name"']?.replace(/"/g, '')}</td>
             <td><span class="badge badge-dark"> ${element['"VET National Code"']?.replace(/"/g, '')}</span></td>
             <td ><span class="badge badge-primary">${element['"COE Status"'].replace(/"/g, '')}</span></td>
-            <td ><a href="" class="btn btn-warning btn-sm">View</a></td>
+            <td ><a href="student.html?id=${element[`"Provider Student ID"`].replace(/"/g, '')}" class="btn btn-warning btn-sm">View</a></td>
             
         </tr>`;
 });
